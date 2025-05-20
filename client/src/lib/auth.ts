@@ -53,12 +53,23 @@ const mockOAuthLogin = async (provider: "google" | "microsoft", callback: () => 
 
 // Initialize auth state from localStorage
 export const initAuthState = (): AuthState => {
-  const storedUser = localStorage.getItem("auth_user");
-  const isAuthenticated = localStorage.getItem("is_authenticated") === "true";
+  // For demonstration purposes, always pre-authenticate with a mock user
+  const mockUser = {
+    id: 1,
+    email: "alex@example.com",
+    name: "Alex Johnson",
+    picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128",
+    provider: "google",
+    providerId: "google-123456",
+    isAdmin: true
+  };
+  
+  localStorage.setItem("auth_user", JSON.stringify(mockUser));
+  localStorage.setItem("is_authenticated", "true");
   
   return {
-    isAuthenticated,
-    user: storedUser ? JSON.parse(storedUser) : null,
+    isAuthenticated: true,
+    user: mockUser,
     isLoading: false,
     error: null
   };

@@ -9,17 +9,128 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight } from "lucide-react";
 
 const Dashboard = () => {
-  const { user } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const user = authContext?.user || {
+    id: 1,
+    email: "alex@example.com",
+    name: "Alex Johnson",
+    isAdmin: true
+  };
   
-  // Fetch upcoming matches
-  const { data: upcomingMatches, isLoading: isLoadingMatches } = useQuery({
-    queryKey: ["/api/matches/upcoming?limit=3"],
-  });
+  // Mock data for demonstration
+  const upcomingMatches = [
+    {
+      id: 1,
+      date: new Date("2025-06-10T18:00:00"),
+      time: "6:00 PM",
+      opponent: "FC Thunder",
+      location: "Main Stadium",
+      details: "Important match against our rivals",
+      createdBy: 1,
+      attendees: [
+        {
+          id: 1,
+          name: "Alex Johnson",
+          email: "alex@example.com",
+          picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128",
+        }
+      ],
+      userAttendance: { status: "attending" },
+      attendanceCount: { attending: 1, total: 2 }
+    },
+    {
+      id: 2,
+      date: new Date("2025-06-18T19:30:00"),
+      time: "7:30 PM",
+      opponent: "United FC",
+      location: "Lincoln Park Field",
+      details: "Away game - carpool available",
+      createdBy: 1,
+      attendees: [],
+      userAttendance: { status: "pending" },
+      attendanceCount: { attending: 0, total: 2 }
+    },
+    {
+      id: 3,
+      date: new Date("2025-06-25T17:00:00"),
+      time: "5:00 PM",
+      opponent: "City Warriors",
+      location: "Community Field",
+      details: "Season finale match",
+      createdBy: 1,
+      attendees: [],
+      userAttendance: { status: "pending" },
+      attendanceCount: { attending: 0, total: 2 }
+    }
+  ];
   
-  // Fetch team members
-  const { data: players, isLoading: isLoadingPlayers } = useQuery({
-    queryKey: ["/api/players"],
-  });
+  const isLoadingMatches = false;
+  
+  // Mock player data
+  const players = [
+    {
+      id: 1,
+      userId: 1,
+      user: {
+        id: 1,
+        name: "Alex Johnson",
+        email: "alex@example.com",
+        picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128"
+      },
+      position: "Forward",
+      status: "Active",
+      attendanceRate: 75,
+      attendedMatches: 15,
+      totalMatches: 20
+    },
+    {
+      id: 2,
+      userId: 2,
+      user: {
+        id: 2,
+        name: "Emma Wilson",
+        email: "emma@example.com",
+        picture: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128"
+      },
+      position: "Midfielder",
+      status: "Active",
+      attendanceRate: 90,
+      attendedMatches: 18,
+      totalMatches: 20
+    },
+    {
+      id: 3,
+      userId: 3,
+      user: {
+        id: 3,
+        name: "Michael Brown",
+        email: "michael@example.com",
+        picture: null
+      },
+      position: "Defender",
+      status: "Injured",
+      attendanceRate: 60,
+      attendedMatches: 12,
+      totalMatches: 20
+    },
+    {
+      id: 4,
+      userId: 4,
+      user: {
+        id: 4,
+        name: "Sophia Garcia",
+        email: "sophia@example.com",
+        picture: null
+      },
+      position: "Goalkeeper",
+      status: "Active",
+      attendanceRate: 85,
+      attendedMatches: 17,
+      totalMatches: 20
+    }
+  ];
+  
+  const isLoadingPlayers = false;
   
   return (
     <main className="flex-grow container mx-auto px-4 py-6">

@@ -18,7 +18,9 @@ const MatchCard = ({ match, currentUserId, isPast = false }: MatchCardProps) => 
   const { toast } = useToast();
   
   // Parse and format date
-  const matchDate = format(parseISO(match.date), "EEE, MMM d, yyyy");
+  const matchDate = match.date instanceof Date 
+    ? format(match.date, "EEE, MMM d, yyyy")
+    : format(parseISO(match.date), "EEE, MMM d, yyyy");
   
   // Update attendance mutation
   const updateAttendance = useMutation({

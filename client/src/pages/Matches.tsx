@@ -11,10 +11,79 @@ import { PlusCircle } from "lucide-react";
 const Matches = () => {
   const { user } = useContext(AuthContext);
   
-  // Fetch all matches
-  const { data: matches, isLoading } = useQuery({
-    queryKey: ["/api/matches"],
-  });
+  // Mock data for demonstration
+  const matches = [
+    {
+      id: 1,
+      date: new Date("2025-06-10T18:00:00"),
+      time: "6:00 PM",
+      opponent: "FC Thunder",
+      location: "Main Stadium",
+      details: "Important match against our rivals",
+      createdBy: 1,
+      attendees: [
+        {
+          id: 1,
+          name: "Alex Johnson",
+          email: "alex@example.com",
+          picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128",
+        }
+      ],
+      userAttendance: { status: "attending" },
+      attendanceCount: { attending: 1, total: 2 }
+    },
+    {
+      id: 2,
+      date: new Date("2025-06-18T19:30:00"),
+      time: "7:30 PM",
+      opponent: "United FC",
+      location: "Lincoln Park Field",
+      details: "Away game - carpool available",
+      createdBy: 1,
+      attendees: [],
+      userAttendance: { status: "pending" },
+      attendanceCount: { attending: 0, total: 2 }
+    },
+    {
+      id: 3,
+      date: new Date("2025-06-25T17:00:00"),
+      time: "5:00 PM",
+      opponent: "City Warriors",
+      location: "Community Field",
+      details: "Season finale match",
+      createdBy: 1,
+      attendees: [],
+      userAttendance: { status: "pending" },
+      attendanceCount: { attending: 0, total: 2 }
+    },
+    {
+      id: 4,
+      date: new Date("2025-05-15T18:30:00"),
+      time: "6:30 PM",
+      opponent: "Eagles FC",
+      location: "Home Stadium",
+      details: "Past match",
+      createdBy: 1,
+      attendees: [
+        {
+          id: 1,
+          name: "Alex Johnson",
+          email: "alex@example.com",
+          picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128",
+        },
+        {
+          id: 2,
+          name: "Emma Wilson", 
+          email: "emma@example.com",
+          picture: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128"
+        }
+      ],
+      userAttendance: { status: "attending" },
+      attendanceCount: { attending: 2, total: 2 }
+    }
+  ];
+  
+  const isLoading = false;
   
   // Split matches into upcoming and past
   const now = new Date();
