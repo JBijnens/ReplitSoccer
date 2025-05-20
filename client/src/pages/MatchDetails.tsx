@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { format, parseISO } from "date-fns";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,7 +36,7 @@ interface MatchDetailsProps {
 }
 
 const MatchDetails = ({ id }: MatchDetailsProps) => {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user } = useContext(AuthContext);
   const [_, navigate] = useLocation();
   const { toast } = useToast();
   

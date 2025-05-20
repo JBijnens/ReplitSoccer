@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import TeamTable from "@/components/TeamTable";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const Team = () => {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user } = useContext(AuthContext);
   
   // Fetch all players with stats
   const { data: players, isLoading } = useQuery({

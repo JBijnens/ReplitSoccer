@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { z } from "zod";
 import { format, parse } from "date-fns";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { 
   Form, 
@@ -38,7 +38,7 @@ interface AddEditMatchProps {
 }
 
 const AddEditMatch = ({ id }: AddEditMatchProps) => {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user } = useContext(AuthContext);
   const [_, navigate] = useLocation();
   const { toast } = useToast();
   const isEditing = !!id;

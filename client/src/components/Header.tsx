@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Link, useLocation } from "wouter";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import { logout } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 const Header = () => {
-  const { user, setAuthState } = useContext(AuthContext) as AuthContextType;
+  const { user, setAuthState } = useContext(AuthContext);
   const [location, setLocation] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   

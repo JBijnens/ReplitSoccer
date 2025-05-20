@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import MatchCard from "@/components/MatchCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { PlusCircle } from "lucide-react";
 
 const Matches = () => {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user } = useContext(AuthContext);
   
   // Fetch all matches
   const { data: matches, isLoading } = useQuery({
