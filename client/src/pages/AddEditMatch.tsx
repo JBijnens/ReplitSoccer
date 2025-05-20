@@ -43,11 +43,19 @@ const AddEditMatch = ({ id }: AddEditMatchProps) => {
   const { toast } = useToast();
   const isEditing = !!id;
   
-  // Fetch match if editing
-  const { data: match, isLoading: isLoadingMatch } = useQuery({
-    queryKey: [`/api/matches/${id}`],
-    enabled: isEditing,
-  });
+  // Mock data for editing a match
+  const mockMatch = {
+    id: id || 1,
+    date: "2025-06-10T18:00:00",
+    time: "18:00",
+    opponent: "FC Thunder",
+    location: "Main Stadium",
+    details: "Important match against our rivals",
+    createdBy: 1
+  };
+  
+  const match = isEditing ? mockMatch : null;
+  const isLoadingMatch = false;
   
   // Create form
   const form = useForm<MatchFormValues>({

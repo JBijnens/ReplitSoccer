@@ -8,10 +8,71 @@ import { Skeleton } from "@/components/ui/skeleton";
 const Team = () => {
   const { user } = useContext(AuthContext);
   
-  // Fetch all players with stats
-  const { data: players, isLoading } = useQuery({
-    queryKey: ["/api/players"],
-  });
+  // Mock player data for the team
+  const players = [
+    {
+      id: 1,
+      userId: 1,
+      user: {
+        id: 1,
+        name: "Alex Johnson",
+        email: "alex@example.com",
+        picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128"
+      },
+      position: "Forward",
+      status: "Active",
+      attendanceRate: 75,
+      attendedMatches: 15,
+      totalMatches: 20
+    },
+    {
+      id: 2,
+      userId: 2,
+      user: {
+        id: 2,
+        name: "Emma Wilson",
+        email: "emma@example.com",
+        picture: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128"
+      },
+      position: "Midfielder",
+      status: "Active",
+      attendanceRate: 90,
+      attendedMatches: 18,
+      totalMatches: 20
+    },
+    {
+      id: 3,
+      userId: 3,
+      user: {
+        id: 3,
+        name: "Michael Brown",
+        email: "michael@example.com",
+        picture: null
+      },
+      position: "Defender",
+      status: "Injured",
+      attendanceRate: 60,
+      attendedMatches: 12,
+      totalMatches: 20
+    },
+    {
+      id: 4,
+      userId: 4,
+      user: {
+        id: 4,
+        name: "Sophia Garcia",
+        email: "sophia@example.com",
+        picture: null
+      },
+      position: "Goalkeeper",
+      status: "Active",
+      attendanceRate: 85,
+      attendedMatches: 17,
+      totalMatches: 20
+    }
+  ];
+  
+  const isLoading = false;
   
   return (
     <main className="flex-grow container mx-auto px-4 py-6">

@@ -40,16 +40,59 @@ const MatchDetails = ({ id }: MatchDetailsProps) => {
   const [_, navigate] = useLocation();
   const { toast } = useToast();
   
-  // Fetch match details
-  const { data: match, isLoading, isError } = useQuery({
-    queryKey: [`/api/matches/${id}`],
-  });
+  // Mock data for match details
+  const match = {
+    id: id,
+    date: "2025-06-10T18:00:00",
+    time: "6:00 PM",
+    opponent: "FC Thunder",
+    location: "Main Stadium",
+    details: "Important match against our rivals. Remember to bring both home and away kits. Carpool arrangements will be shared in the team group chat.",
+    createdBy: 1,
+    attendees: [
+      {
+        id: 1,
+        name: "Alex Johnson",
+        email: "alex@example.com",
+        picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128",
+      }
+    ],
+    userAttendance: { status: "attending" },
+    attendanceCount: { attending: 1, total: 4 }
+  };
   
-  // Fetch match attendances
-  const { data: attendances, isLoading: isLoadingAttendances } = useQuery({
-    queryKey: [`/api/attendance/match/${id}`],
-    enabled: !!match,
-  });
+  const isLoading = false;
+  const isError = false;
+  
+  // Mock attendance data
+  const attendances = [
+    {
+      id: 1,
+      userId: 1,
+      matchId: id,
+      status: "attending",
+      user: {
+        id: 1,
+        name: "Alex Johnson",
+        email: "alex@example.com",
+        picture: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128",
+      }
+    },
+    {
+      id: 2,
+      userId: 2,
+      matchId: id,
+      status: "notAttending",
+      user: {
+        id: 2,
+        name: "Emma Wilson",
+        email: "emma@example.com",
+        picture: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&h=128"
+      }
+    }
+  ];
+  
+  const isLoadingAttendances = false;
   
   // Update attendance mutation
   const updateAttendance = useMutation({
