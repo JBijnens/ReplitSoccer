@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import MatchCard from "@/components/MatchCard";
 import TeamTable from "@/components/TeamTable";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight } from "lucide-react";
 
 const Dashboard = () => {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user } = useContext(AuthContext);
   
   // Fetch upcoming matches
   const { data: upcomingMatches, isLoading: isLoadingMatches } = useQuery({

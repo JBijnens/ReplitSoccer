@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useLocation } from "wouter";
-import { AuthContext, type AuthContextType } from "@/App";
+import { AuthContext } from "@/App";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -9,7 +9,7 @@ import { loginWithGoogle, loginWithMicrosoft } from "@/lib/auth";
 import { Loader2, LogIn, Mail } from "lucide-react";
 
 const Login = () => {
-  const { setAuthState, isLoading } = useContext(AuthContext) as AuthContextType;
+  const { setAuthState, isLoading } = useContext(AuthContext);
   const [_, setLocation] = useLocation();
   
   const handleGoogleLogin = () => {
@@ -77,7 +77,7 @@ const Login = () => {
                   {isLoading ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   ) : (
-                    <SiMicrosoft className="mr-2 h-4 w-4" />
+                    <Mail className="mr-2 h-4 w-4" />
                   )}
                   Sign in with Microsoft
                 </Button>
@@ -93,7 +93,7 @@ const Login = () => {
                   {isLoading ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   ) : (
-                    <SiGoogle className="mr-2 h-4 w-4" />
+                    <LogIn className="mr-2 h-4 w-4" />
                   )}
                   Sign in with Google
                 </Button>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -25,7 +25,13 @@ export interface AuthContextType {
   setAuthState: (state: any) => void;
 }
 
-export const AuthContext = React.createContext<AuthContextType | null>(null);
+export const AuthContext = createContext<AuthContextType>({
+  isAuthenticated: false,
+  user: null,
+  isLoading: false,
+  error: null,
+  setAuthState: () => {}
+});
 
 function App() {
   const [authState, setAuthState] = useState(initAuthState());
@@ -112,4 +118,4 @@ function App() {
 
 export default App;
 
-import React from "react";
+
