@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { loginWithGoogle, loginWithMicrosoft } from "@/lib/auth";
-import { SiMicrosoft, SiGoogle } from "react-icons/si";
-import { Loader2 } from "lucide-react";
+// Using Lucide icons instead of react-icons
+import { Loader2, LogIn, Mail } from "lucide-react";
 
 const Login = () => {
   const { setAuthState, isLoading } = useContext(AuthContext) as AuthContextType;

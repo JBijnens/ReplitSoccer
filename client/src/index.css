@@ -76,38 +76,40 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
+    font-family: var(--font-heading);
+    @apply font-bold;
   }
 }
 
 /* Custom classes */
 .bg-primary-gradient {
-  @apply bg-gradient-to-r from-primary to-primary-light;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-light)));
 }
 
 .bg-status-attending {
-  @apply bg-[hsl(var(--status-attending))];
+  background-color: hsl(var(--status-attending));
 }
 
 .border-status-attending {
-  @apply border-[hsl(var(--status-attending))];
+  border-color: hsl(var(--status-attending));
 }
 
 .bg-status-not-attending {
-  @apply bg-[hsl(var(--status-not-attending))];
+  background-color: hsl(var(--status-not-attending));
 }
 
 .border-status-not-attending {
-  @apply border-[hsl(var(--status-not-attending))];
+  border-color: hsl(var(--status-not-attending));
 }
 
 .bg-status-pending {
-  @apply bg-[hsl(var(--status-pending))];
+  background-color: hsl(var(--status-pending));
 }
 
 .border-status-pending {
-  @apply border-[hsl(var(--status-pending))];
+  border-color: hsl(var(--status-pending));
 }
